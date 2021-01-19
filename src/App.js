@@ -101,12 +101,9 @@ export default class App extends Component {
     const AsyncComponent = loadable(props => import(`./Components/${props.component}`));    
 
     if (this.state.route === 'page1') {
-      return <Page1 onRouteChange = {
-        this.onRouteChange
-      }
-      />
+      return <Page1 onRouteChange = {this.onRouteChange}/>
     } else if (this.state.route === 'page2') {
-        return <Suspense fallback={<AsyncComponent component='spinner' />}>
+        return <Suspense fallback={<LoadingSpinner />}>
           <P2Lazy onRouteChange={this.onRouteChange} />
         </Suspense>
     } else if (this.state.route === 'page3') {
